@@ -253,14 +253,18 @@ int main() {
     Solution solver;
     string expr;
 
-    cout << "Enter an arithmetic expression (type 'exit' to quit):\n";
+    cout << "Enter an arithmetic expression (type 'exit' to quit and 'clear' to clear):\n";
 
     while (true) {
         cout << "> ";
         getline(cin, expr);
         if (expr == "exit") break;
         if (expr.empty()) continue;
-
+        if (expr == "clear") {
+            system("cls"); // Clear the console on Windows
+            cout << "Enter an arithmetic expression (type 'exit' to quit and 'clear' to clear):\n";
+            continue;
+        }
         double result = solver.calculate(expr);
         if (!isnan(result)) {
             cout << "Result: " << result << endl;
